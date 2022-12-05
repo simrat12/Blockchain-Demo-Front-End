@@ -1,0 +1,127 @@
+.testing:hover {
+    background-color:#2e1e74;
+    transition: 0.7s;
+}
+
+.raffle {
+    position: "left";
+    width: "118px";
+    height: "55px";
+    left: "351px";
+    top: "59px";
+    padding-left: "50px";
+
+    font-family: 'Baloo';
+    font-style: normal;
+    font-weight: "400";
+    font-size: "35px";
+    line-height: "55px";
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
+
+.singleLetter {
+    font-size: 10px;
+}
+
+.rectangle {
+    position: absolute;
+    background: rgba(85, 211, 189, 0.38);
+    border-radius: 30px;
+}
+
+.depositText {
+    position: absolute;
+    width: 331px;
+    height: 55px;
+    left: 413px;
+    top: 335px;
+
+    font-family: 'Baloo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 55px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.enterAmount {
+    position: absolute;
+    width: 230px;
+    height: 55px;
+    left: 413px;
+    top: 390px;
+
+    font-family: 'Baloo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 55px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
+
+.inputAmount {
+    position: absolute;
+    width: 239px;
+    height: 29px;
+    left: 668px;
+    top: 403px;
+
+    background: rgba(117, 195, 212, 0.5);
+    border-radius: 20px;
+}
+
+.viewTickets {
+    position: absolute;
+    width: 118px;
+    height: 31px;
+    left: 789px;
+    top: 347px;
+
+    font-family: 'Baloo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+
+    color: #FFFFFF;
+}
+
+.viewTicketInput {
+    position: absolute;
+    width: 108px;
+    height: 29px;
+    left: 916px;
+    top: 347px;
+
+    background: rgba(117, 195, 213, 0.5);
+    border-radius: 20px;
+}
+
+.depositButton {
+    position: absolute;
+    width: 92px;
+    height: 16px;
+    left: 932px;
+    top: 406px;
+
+    font-family: 'Baloo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 16px;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+}
