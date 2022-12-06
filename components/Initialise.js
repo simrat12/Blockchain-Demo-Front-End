@@ -10,10 +10,18 @@ export default function Initialise() {
  
     const [currentState, setState] = useState(0);
     const [owner, setOwner] = useState(0)
+    const[isAdmin, SetIfAdmin] = useState(false);
+
+    async function checkIfAdmin(addy) {
+        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        let Admin = await contract.roles("0xdf8b4c520ffe197c5343c6f5aec59570151ef9a492f2c624fd45ddde6135ec42", addy);
+        SetIfAdmin(Admin);
+    }
 
     const addresses = async () => {
         let acc = await provider.listAccounts()
         setOwner(acc[0])
+        await checkIfAdmin(acc[0]);
     };
 
     addresses();
@@ -56,7 +64,7 @@ export default function Initialise() {
         <div>
             <link href='https://fonts.googleapis.com/css?family=Baloo' rel='stylesheet'></link>
             <div> 
-                {(owner == "0x6d75480cc475f93c1214cf93c0a291c01badb2fd" || owner == "0x6D75480Cc475F93c1214Cf93C0A291c01badb2FD") ?
+                {(owner == "0x6d75480cc475f93c1214cf93c0a291c01badb2fd" || owner == "0x6D75480Cc475F93c1214Cf93C0A291c01badb2FD" || isAdmin) ?
                 <div className={styles.rectangle}><span className={styles.enterAmount2}>Enter Vesting Period </span> <input className={styles.inputAmount3} type="text" name="a13" id="a13"></input>
                 <div style={{paddingLeft: "20px", display : "inline-flex"}}><button className={styles.testing5} onClick={async () => (await initialiseVestingPeriod())}>Set New Vesting Period</button></div>
                 </div> : <></>}
