@@ -46,7 +46,6 @@ export default function Home() {
         <br></br>
         <br></br>
         <br></br>
-        <br></br>
         <ChangeEntry />
         <br></br>
         <br></br>

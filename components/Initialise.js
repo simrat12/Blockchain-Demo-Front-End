@@ -13,7 +13,7 @@ export default function Initialise() {
     const[isAdmin, SetIfAdmin] = useState(false);
 
     async function checkIfAdmin(addy) {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
         let Admin = await contract.roles("0xdf8b4c520ffe197c5343c6f5aec59570151ef9a492f2c624fd45ddde6135ec42", addy);
         SetIfAdmin(Admin);
     }
@@ -46,7 +46,7 @@ export default function Initialise() {
     }, [])
 
     async function initialiseVestingPeriod() {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
 
         let b = document.getElementById("a13").value;
         console.log(b);

@@ -6,6 +6,7 @@ import styles from "../styles/styles2.module.css"
 export default function Test2() {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     const signer = provider.getSigner();
+    
 
     const [currentAccount, setCurrentAccount] = useState(""); 
     const [currentState, changeState] = useState(0);   
@@ -22,6 +23,13 @@ export default function Test2() {
             }
     }
 
+    const initialClaimState = async () => {
+        let acc = await provider.listAccounts();
+        await seeRewards(acc[0]);
+    }
+
+    initialClaimState();
+
     useEffect(() => {
         domValue
         console.log("resource changed")
@@ -34,10 +42,11 @@ export default function Test2() {
 
     useEffect(() => {
         checkIfAccountChanged();
+        initialClaimState();
     }, [])
 
     async function seeRewards(addy) {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
         let duration = await contract.ChosenTimePeriod();
         let duration2 = duration.toNumber();
         let startTime = await contract.winnerInfo(addy);
@@ -69,7 +78,7 @@ export default function Test2() {
                 }
                 console.log(remainingRewards);
 
-                setRemainingRewards(remainingRewards);
+                setRemainingRewards(Math.floor(remainingRewards));
 
             })
         });
@@ -77,10 +86,10 @@ export default function Test2() {
 
 
     async function Winnings() {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
         try {
-            let b = document.getElementById("a12").value;
-            let tx = await contract.withdraw2(b);
+            let b = document.getElementById("claim").value;
+            let tx = await contract.withdraw2(b, {gasLimit: 10000000});
             let receipt = await tx.wait();
             setDomValue(b);
             changeState(1);
@@ -100,8 +109,8 @@ export default function Test2() {
                     <div className={styles.enterAmount}>Enter Amount </div>
                 </div>
                 <div>
-                    <div className={styles.viewTickets}>claimable</div>
-                    <input className={styles.inputAmount} type="number" name="a" id="a"></input>
+                    <div className={styles.viewTickets}>Claimable</div>
+                    <input className={styles.inputAmount} type="number" name="claim" id="claim"></input>
                 </div>
                 <div>
                     <div className={styles.viewTicketInput}>{remainingRewards2}</div>

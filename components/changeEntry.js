@@ -11,7 +11,7 @@ export default function ChangeEntry() {
 
 
     async function checkIfAdmin(addy) {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
         let Admin = await contract.roles("0xdf8b4c520ffe197c5343c6f5aec59570151ef9a492f2c624fd45ddde6135ec42", addy);
         SetIfAdmin(Admin);
     }
@@ -48,7 +48,7 @@ export default function ChangeEntry() {
 
 
     async function changeEntry2() {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
 
         let b = document.getElementById("a1").value;
         await contract.changeMaxEntry(b, {gasLimit: 1000000,});
@@ -59,7 +59,7 @@ export default function ChangeEntry() {
             <link href='https://fonts.googleapis.com/css?family=Baloo' rel='stylesheet'></link>
             {(owner == "0x6D75480Cc475F93c1214Cf93C0A291c01badb2FD" || isAdmin) ?
             <div>
-            <div className={styles.rectangle}><span className={styles.enterAmount2}>New Entry Fee   </span><input className={styles.inputAmount3} type="number" name="a1" id="a1"></input>
+            <div className={styles.rectangle}><span className={styles.enterAmount2}>New Max Entry Fee   </span><input className={styles.inputAmount3} type="number" name="a1" id="a1"></input>
             <div style={{paddingLeft: "20px", paddingTop: "5px"}}><button className={styles.testing5} onClick={async () => (await changeEntry2({onSuccess: handleSuccess, onError: (error) => console.log(error),}))}>Submit new Fee</button></div>
             </div></div> : <></>}
         </div>

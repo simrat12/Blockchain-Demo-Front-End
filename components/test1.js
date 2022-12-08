@@ -22,7 +22,7 @@ export default function Test1() {
 
 
     async function set_ticket_number(acc) {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
         console.log(acc);
         var address1 = await provider.resolveName(acc);
         console.log(address1);
@@ -31,9 +31,17 @@ export default function Test1() {
         setTicketNumber(test1.toNumber());
     }
 
+    async function addy() {
+        let acc = await provider.listAccounts();
+        await set_ticket_number(acc[0]);
+    }
+
+    addy();
+
 
     useEffect(() => {
         checkIfAccountChanged();
+        addy();
     }, [])
 
 
@@ -47,10 +55,10 @@ export default function Test1() {
     }
 
     async function enterRaffle() {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
         const contract2 = new ethers.Contract('0x198244C498340dD151B5A0bB7f0d40893270a085', abi2, signer);
         let b = document.getElementById("a").value;
-        let tx = await contract2.approve('0x10418a0D858616B10eD51719298cBA31572413b9', b);
+        let tx = await contract2.approve('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', b);
         let receipt = await tx.wait();
         await contract.enterRaffleInToken(b, {gasLimit: 10000000});
     }

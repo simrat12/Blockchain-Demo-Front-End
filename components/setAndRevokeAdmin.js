@@ -16,7 +16,7 @@ export default function ChangeAdmin() {
     const[isAdmin, SetIfAdmin] = useState(false);
 
     async function checkIfAdmin(addy) {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
         let Admin = await contract.roles("0xdf8b4c520ffe197c5343c6f5aec59570151ef9a492f2c624fd45ddde6135ec42", addy);
         SetIfAdmin(Admin);
     }
@@ -59,7 +59,7 @@ export default function ChangeAdmin() {
     }, [currentState])
 
     async function setNewAdmin() {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
 
         let b = document.getElementById("new_admin").value;
         console.log(b);
@@ -76,7 +76,7 @@ export default function ChangeAdmin() {
     }
 
     async function removeAdmin() {
-        const contract = new ethers.Contract('0x10418a0D858616B10eD51719298cBA31572413b9', abi, signer);
+        const contract = new ethers.Contract('0xB55Ae10ed3a1A588D7b58B14d560cAc2A072AC24', abi, signer);
 
         let b = document.getElementById("old_admin").value;
         console.log(b);
@@ -115,6 +115,7 @@ export default function ChangeAdmin() {
                     </div>
                 </div> : <div style={{backgroundColor:"#1a1141"}}></div>}
             </div>
+            <br></br>
             <div style={{color: "red", textAlign: "center"}}>
                 {(currentState == 2) ? <div>{document.getElementById("new_admin").value} is now an Admin!</div> : (currentState == 1) ? <div>Failed</div> : <></>}
                 {(currentState == 3) ? <div>{document.getElementById("old_admin").value} is no longer an Admin!</div> : (currentState == 4) ? <div>Failed</div> : <></>}
